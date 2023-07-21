@@ -6,7 +6,6 @@ exports.BasePage = class BasePage {
     this.resetButton = page.getByText("Restart...");
     this.header = page.locator(".page > h1");
     this.board = page.locator("#board");
-    //this.title = page.title();
     this.message = page.locator("#message");
   }
 
@@ -14,6 +13,7 @@ exports.BasePage = class BasePage {
     await this.resetButton.click();
   }
 
+  //Used soft assertions because I didn't want this to stop program flow.
   async assertFreshPage() {
     await expect.soft(await this.header).toBeVisible();
     await expect.soft(await this.board).toBeEnabled();
@@ -24,6 +24,7 @@ exports.BasePage = class BasePage {
     await expect.soft(await this.resetButton).toBeEnabled();
   }
 
+  //TODO: Make this an assertion instead of a wait step to test Message functionality.
   async waitForMessage(messageText) {
     console.log("waitForText: ", await this.message.innerText());
     await this.page.waitForSelector(
