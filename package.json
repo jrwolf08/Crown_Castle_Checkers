@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test":  "playwright test --project=chromium",
-    "test-all":  "playwright test"
+    "tests-cross-browser":  "playwright test"
   },
   "keywords": [],
   "author": "",
